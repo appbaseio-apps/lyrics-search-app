@@ -1,9 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 
 import { DataSearch } from "@appbaseio/reactivesearch";
+import { randomLyricsArray } from "../utils";
 const LyricsInput = (props) => {
   const [lyricsText, setLyricsText] = useState("");
-
+  const currentSelectedRandomLyrics = useRef(null);
   useEffect(() => {
     const { setQuery, dataField } = props;
     if (lyricsText) {
@@ -23,6 +24,18 @@ const LyricsInput = (props) => {
     setLyricsText(e.target.value);
   };
 
+  const handleGenerateRandomLyrics = () => {
+    let textIndex = Math.floor(Math.random() * 10);
+    while (
+      currentSelectedRandomLyrics.current === randomLyricsArray[textIndex]
+    ) {
+      textIndex = Math.floor(Math.random() * 10);
+    }
+
+    setLyricsText(randomLyricsArray[textIndex]);
+    currentSelectedRandomLyrics.current = randomLyricsArray[textIndex];
+  };
+
   return (
     <div className="input-wrapper">
       <textarea
@@ -32,6 +45,9 @@ const LyricsInput = (props) => {
         rows="20"
         cols="30"
       />
+      <button onClick={handleGenerateRandomLyrics}>
+        Generate Random Lyrics
+      </button>
     </div>
   );
 };

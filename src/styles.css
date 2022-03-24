@@ -1,0 +1,152 @@
+h1 {
+  color: white;
+  background-color: black;
+}
+body {
+  margin: 0;
+}
+.app-wrapper {
+  height: 100vh;
+  width: 100vw;
+  background-image: url("https://img.freepik.com/free-photo/gray-abstract-wireframe-technology-background_53876-101941.jpg");
+  background-repeat: repeat;
+  background-size: cover;
+}
+.row {
+  display: flex;
+  height: 100%;
+}
+
+.col.max-width {
+  max-width: max-content;
+}
+.col {
+  flex: 1;
+  padding: 1.5rem;
+}
+
+.lyric-item {
+  margin-bottom: 1rem;
+  padding: 14px;
+  background: #f2f2f2;
+  border-radius: 10px;
+  cursor: pointer;
+  box-shadow: 0 0 20px 8px #d0d0d0;
+  position: relative;
+}
+.lyric-item h4 {
+  margin: 0;
+  margin-bottom: 5px;
+}
+.lyric-item > p {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  margin: 0;
+}
+
+.popover__content {
+  opacity: 0;
+  visibility: hidden;
+  position: absolute;
+  left: 50%;
+  top: 100%;
+  transform: translate(0, 10px);
+  background-color: #ffd3d3;
+  padding: 1.5rem;
+  box-shadow: 0 2px 5px 0 rgb(0 0 0 / 26%);
+  width: 50%;
+}
+.popover__content:before {
+  position: absolute;
+  z-index: -1;
+  content: "";
+  right: calc(50% - 10px);
+  top: -8px;
+  border-style: solid;
+  border-width: 0 10px 10px 10px;
+  border-color: transparent transparent #ffd3d3 transparent;
+  transition-duration: 0.3s;
+  transition-property: transform;
+}
+.lyric-item:hover .popover__content {
+  z-index: 10;
+  opacity: 1;
+  visibility: visible;
+  transform: translate(-50%, 0px);
+  transition: opacity 0.5s cubic-bezier(0.75, -0.02, 0.2, 0.97);
+}
+.popover__message {
+  text-align: left;
+}
+// toggle button css
+
+.switch-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  margin: 10px auto;
+}
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 44px;
+  height: 21px;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 18px;
+  width: 19px;
+  left: 1px;
+  bottom: 2px;
+  background-color: white;
+  -webkit-transition: 0.4s;
+  transition: all 0.4s;
+}
+
+input:checked + .slider {
+  background-color: #2196f3;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #2196f3;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(22px);
+  -ms-transform: translateX(22px);
+  transform: translateX(22px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}

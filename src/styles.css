@@ -1,9 +1,21 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 h1 {
   color: white;
   background-color: black;
 }
 body {
   margin: 0;
+  height: 100vh;
+  width: 100vw;
+  overflow: auto;
+  overflow-x: hidden;
+  background-image: url("https://img.freepik.com/free-photo/gray-abstract-wireframe-technology-background_53876-101941.jpg");
+  background-repeat: repeat;
+  background-size: cover;
 }
 .app-wrapper {
   height: 100vh;
@@ -11,6 +23,11 @@ body {
   background-image: url("https://img.freepik.com/free-photo/gray-abstract-wireframe-technology-background_53876-101941.jpg");
   background-repeat: repeat;
   background-size: cover;
+  overflow: auto;
+}
+
+textarea {
+  padding: 5px;
 }
 .row {
   display: flex;
@@ -23,16 +40,19 @@ body {
 .col {
   flex: 1;
   padding: 1.5rem;
+  max-height: 100%;
 }
 
+.result-wrapper {
+  position: relative;
+}
 .lyric-item {
-  margin-bottom: 1rem;
+  margin: 1rem 0;
   padding: 14px;
   background: #f2f2f2;
   border-radius: 10px;
   cursor: pointer;
   box-shadow: 0 0 20px 8px #d0d0d0;
-  position: relative;
 }
 .lyric-item h4 {
   margin: 0;
@@ -47,40 +67,11 @@ body {
   margin: 0;
 }
 
-.popover__content {
-  opacity: 0;
-  visibility: hidden;
-  position: absolute;
-  left: 50%;
-  top: 100%;
-  transform: translate(0, 10px);
-  background-color: #ffd3d3;
-  padding: 1.5rem;
-  box-shadow: 0 2px 5px 0 rgb(0 0 0 / 26%);
-  width: 50%;
+.lyric-item:hover p {
+  max-height: max-content;
+  display: block;
 }
-.popover__content:before {
-  position: absolute;
-  z-index: -1;
-  content: "";
-  right: calc(50% - 10px);
-  top: -8px;
-  border-style: solid;
-  border-width: 0 10px 10px 10px;
-  border-color: transparent transparent #ffd3d3 transparent;
-  transition-duration: 0.3s;
-  transition-property: transform;
-}
-.lyric-item:hover .popover__content {
-  z-index: 10;
-  opacity: 1;
-  visibility: visible;
-  transform: translate(-50%, 0px);
-  transition: opacity 0.5s cubic-bezier(0.75, -0.02, 0.2, 0.97);
-}
-.popover__message {
-  text-align: left;
-}
+
 // toggle button css
 
 .switch-wrapper {

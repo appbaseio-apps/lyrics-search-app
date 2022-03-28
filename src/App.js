@@ -9,8 +9,8 @@ import {
   ReactiveList,
 } from "@appbaseio/reactivesearch";
 const APP_NAME = {
-  KNN: "app-store-data-ann",
-  TEXT: "app-store-data-text",
+  KNN: "knn_lyrics_app",
+  TEXT: "text_lyrics_app",
 };
 
 function App() {
@@ -33,7 +33,7 @@ function App() {
             labelAfter="TEXT"
           />
           <ReactiveComponent
-            dataField={["Name", "Description"]}
+            dataField={["SName", "Lyric"]}
             componentId="lyric-input"
           >
             {(data) => {
@@ -47,7 +47,7 @@ function App() {
           <ReactiveList
             size={3}
             infiniteScroll
-            dataField="Name"
+            dataField="Lyric"
             className="result-wrapper"
             showResultStats={true}
             componentId="lyric-result"

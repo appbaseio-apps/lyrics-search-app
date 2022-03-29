@@ -20,7 +20,7 @@ function App() {
     <ReactiveBase
       app={appName}
       enableAppbase
-      url="https://lYFCzg5ga:89fbdf16-216f-44c6-9191-900afaeaa74d@calm-river-nesrtpa-arc.searchbase.io"
+      url="https://readonly:LF*$Sst`ENR>6}J9@calm-river-nesrtpa-arc.searchbase.io"
     >
       <div className="row">
         <div className="col max-width">

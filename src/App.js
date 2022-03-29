@@ -56,8 +56,12 @@ function App() {
             renderItem={(item) => {
               return (
                 <div className="lyric-item">
-                  <h4>{item.Name} </h4>
-                  <p>{item.Description}</p>{" "}
+                  <h4>{item.SName} </h4>
+                  <p
+                    dangerouslySetInnerHTML={{
+                      __html: item.Lyric.replace(/\n/g, "<br />"),
+                    }}
+                  ></p>{" "}
                 </div>
               );
             }}

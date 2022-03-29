@@ -70,6 +70,7 @@ textarea {
 .lyric-item:hover p {
   max-height: max-content;
   display: block;
+  white-space: pre-wrap;
 }
 
 // toggle button css

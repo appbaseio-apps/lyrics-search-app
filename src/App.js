@@ -3,11 +3,7 @@ import { hot } from "react-hot-loader/root";
 import LyricsInput from "./components/LyricsInput";
 import ToggleButton from "./components/ToggleButton";
 
-import {
-  ReactiveBase,
-  ReactiveComponent,
-  ReactiveList,
-} from "@appbaseio/reactivesearch";
+import { ReactiveBase, ReactiveList } from "@appbaseio/reactivesearch";
 const APP_NAME = {
   KNN: "knn_lyrics_app",
   TEXT: "text_lyrics_app",
@@ -32,16 +28,7 @@ function App() {
             labelBefore="KNN"
             labelAfter="TEXT"
           />
-          <ReactiveComponent
-            dataField={["SName", "Lyric"]}
-            componentId="lyric-input"
-          >
-            {(data) => {
-              return (
-                <LyricsInput {...data} dataField={["Name", "Description"]} />
-              );
-            }}
-          </ReactiveComponent>
+          <LyricsInput dataField={["Name", "Description"]} />
         </div>
         <div className="col">
           <ReactiveList
@@ -51,17 +38,34 @@ function App() {
             className="result-wrapper"
             showResultStats={true}
             componentId="lyric-result"
+            showLoader={false}
             pagination={false}
             react={{ and: ["lyric-input"] }}
-            renderItem={(item) => {
+            render={({ data, loading }) => {
               return (
-                <div className="lyric-item">
-                  <h4>{item.SName} </h4>
-                  <p
-                    dangerouslySetInnerHTML={{
-                      __html: item.Lyric.replace(/\n/g, "<br />"),
-                    }}
-                  ></p>{" "}
+                <div style={{ position: "relative" }}>
+                  {loading && (
+                    <div className="loader">
+                      {" "}
+                      <img height="150px" src="https://i.gifer.com/XVo6.gif" />
+                    </div>
+                  )}
+                  {data &&
+                    data.map((item) => {
+                      return (
+                        <div
+                          key={item._id + new Date().getTime() + Math.random()}
+                          className="lyric-item"
+                        >
+                          <h4>{item.SName} </h4>
+                          <p
+                            dangerouslySetInnerHTML={{
+                              __html: item.Lyric.replace(/\n/g, "<br />"),
+                            }}
+                          ></p>{" "}
+                        </div>
+                      );
+                    })}
                 </div>
               );
             }}

@@ -137,7 +137,8 @@ input:checked + .slider:before {
 .input-wrapper {
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: 10px;
+  margin-top: 1rem;
 }
 
 .input-wrapper button {

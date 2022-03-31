@@ -1,10 +1,11 @@
-import React, { useState, useRef } from "react";
-
+import React, { useRef } from "react";
 import { DataSearch } from "@appbaseio/reactivesearch";
-import { randomLyricsArray } from "../utils";
-const LyricsInput = () => {
-  const [lyricsText, setLyricsText] = useState("");
-  const currentSelectedRandomLyrics = useRef(null);
+
+const LyricsInput = ({
+  lyricsText,
+  setLyricsText,
+  handleGenerateRandomLyrics,
+}) => {
   const triggerQueryRef = useRef(null);
 
   const handleChange = (value, triggerQuery) => {
@@ -14,17 +15,6 @@ const LyricsInput = () => {
     if (value !== lyricsText) {
       setLyricsText(value);
     }
-  };
-
-  const handleGenerateRandomLyrics = () => {
-    let textIndex = Math.floor(Math.random() * 10);
-    while (
-      currentSelectedRandomLyrics.current === randomLyricsArray[textIndex]
-    ) {
-      textIndex = Math.floor(Math.random() * 10);
-    }
-    setLyricsText(randomLyricsArray[textIndex]);
-    currentSelectedRandomLyrics.current = randomLyricsArray[textIndex];
   };
 
   const performSearch = () => {

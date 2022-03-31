@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { hot } from "react-hot-loader/root";
 import LyricsInput from "./components/LyricsInput";
 import ToggleButton from "./components/ToggleButton";
 
+import { randomLyricsArray } from "./utils";
 import { ReactiveBase, ReactiveList } from "@appbaseio/reactivesearch";
 const APP_NAME = {
   KNN: "knn_lyrics_app",
@@ -12,6 +13,18 @@ const APP_NAME = {
 function App() {
   const [appName, setAppName] = useState(APP_NAME.TEXT);
 
+  const [lyricsText, setLyricsText] = useState("");
+  const currentSelectedRandomLyrics = useRef(null);
+  const handleGenerateRandomLyrics = () => {
+    let textIndex = Math.floor(Math.random() * 10);
+    while (
+      currentSelectedRandomLyrics.current === randomLyricsArray[textIndex]
+    ) {
+      textIndex = Math.floor(Math.random() * 10);
+    }
+    setLyricsText(randomLyricsArray[textIndex]);
+    currentSelectedRandomLyrics.current = randomLyricsArray[textIndex];
+  };
   return (
     <ReactiveBase
       app={appName}
@@ -28,7 +41,11 @@ function App() {
             labelBefore="KNN"
             labelAfter="TEXT"
           />
-          <LyricsInput dataField={["Name", "Description"]} />
+          <LyricsInput
+            lyricsText={lyricsText}
+            setLyricsText={setLyricsText}
+            handleGenerateRandomLyrics={handleGenerateRandomLyrics}
+          />
         </div>
         <div className="col">
           <ReactiveList

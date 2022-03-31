@@ -32,7 +32,12 @@ const LyricsInput = () => {
   };
   return (
     <div className="input-wrapper">
+      {" "}
+      <button className="generate-lyrics" onClick={handleGenerateRandomLyrics}>
+        Search Random Lyrics
+      </button>
       <div title={lyricsText}>
+        {" "}
         <DataSearch
           autosuggest={false}
           onChange={handleChange}
@@ -50,9 +55,6 @@ const LyricsInput = () => {
         />
       </div>
       <button onClick={performSearch}>Search</button>{" "}
-      <button className="generate-lyrics" onClick={handleGenerateRandomLyrics}>
-        Search Random Lyrics
-      </button>
     </div>
   );
 };

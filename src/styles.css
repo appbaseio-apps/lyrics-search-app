@@ -29,6 +29,12 @@ body {
 textarea {
   padding: 5px;
 }
+.flex-column {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  gap: 2rem;
+}
 .row {
   display: flex;
   height: 100%;
@@ -47,12 +53,13 @@ textarea {
   position: relative;
 }
 .lyric-item {
-  margin: 1rem 0;
   padding: 14px;
   background: #f2f2f2;
+  width: 50%;
   border-radius: 10px;
   cursor: pointer;
   box-shadow: 0 0 20px 8px #d0d0d0;
+  max-width: 350px;
 }
 .lyric-item h4 {
   margin: 0;
@@ -192,4 +199,10 @@ button.generate-lyrics {
   position: sticky;
   top: 0;
   align-items: center;
+}
+
+@media only screen and (max-width: 600px) {
+  .lyric-item {
+    width: 100%;
+  }
 }

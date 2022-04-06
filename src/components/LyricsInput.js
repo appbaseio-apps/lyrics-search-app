@@ -42,6 +42,8 @@ const LyricsInput = ({
               triggerQuery();
             }
           }}
+          highlight
+          highlightField={"Lyric"}
         />
       </div>
       <button onClick={performSearch}>Search</button>{" "}

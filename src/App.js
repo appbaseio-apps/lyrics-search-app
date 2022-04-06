@@ -31,8 +31,8 @@ function App() {
       enableAppbase
       url="https://readonly:LF*$Sst`ENR>6}J9@calm-river-nesrtpa-arc.searchbase.io"
     >
-      <div className="row">
-        <div className="col max-width">
+      <div className="flex-column">
+        <div>
           <ToggleButton
             checked={appName === APP_NAME.TEXT}
             handleChange={(checked) =>
@@ -47,47 +47,55 @@ function App() {
             handleGenerateRandomLyrics={handleGenerateRandomLyrics}
           />
         </div>
-        <div className="col">
-          <ReactiveList
-            size={3}
-            infiniteScroll
-            dataField="Lyric"
-            className="result-wrapper"
-            showResultStats={true}
-            componentId="lyric-result"
-            showLoader={false}
-            pagination={false}
-            react={{ and: ["lyric-input"] }}
-            render={({ data, loading }) => {
-              return (
-                <div style={{ position: "relative" }}>
-                  {loading && (
-                    <div className="loader">
-                      {" "}
-                      <img height="150px" src="https://i.gifer.com/XVo6.gif" />
-                    </div>
-                  )}
-                  {data &&
-                    data.map((item) => {
-                      return (
-                        <div
-                          key={item._id + new Date().getTime() + Math.random()}
-                          className="lyric-item"
-                        >
-                          <h4>{item.SName} </h4>
-                          <p
-                            dangerouslySetInnerHTML={{
-                              __html: item.Lyric.replace(/\n/g, "<br />"),
-                            }}
-                          ></p>{" "}
-                        </div>
-                      );
-                    })}
-                </div>
-              );
-            }}
-          />
-        </div>
+        <ReactiveList
+          size={3}
+          highlight
+          infiniteScroll
+          dataField="Lyric"
+          className="result-wrapper"
+          showResultStats={true}
+          componentId="lyric-result"
+          showLoader={false}
+          pagination={false}
+          react={{ and: ["lyric-input"] }}
+          render={({ data, loading }) => {
+            return (
+              <div
+                style={{
+                  position: "relative",
+                  display: "flex",
+                  flexWrap: "wrap",
+                  justifyContent: "center",
+                  gap: "20px",
+                  marginTop: "1.5rem",
+                }}
+              >
+                {loading && (
+                  <div className="loader">
+                    {" "}
+                    <img height="150px" src="https://i.gifer.com/XVo6.gif" />
+                  </div>
+                )}
+                {data &&
+                  data.map((item) => {
+                    return (
+                      <div
+                        key={item._id + new Date().getTime() + Math.random()}
+                        className="lyric-item"
+                      >
+                        <h4>{item.SName} </h4>
+                        <p
+                          dangerouslySetInnerHTML={{
+                            __html: item.Lyric.replace(/\n/g, "<br />"),
+                          }}
+                        ></p>{" "}
+                      </div>
+                    );
+                  })}
+              </div>
+            );
+          }}
+        />
       </div>
     </ReactiveBase>
   );

@@ -2,11 +2,30 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto",
+    "Noto Sans", "Ubuntu", "Droid Sans", "Helvetica Neue", sans-serif;
 }
 h1 {
   color: white;
   background-color: black;
 }
+
+nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem;
+  background: #1e87da33;
+}
+
+nav h2 {
+}
+
+nav a {
+  text-decoration: underline;
+  font-size: 18px;
+}
+
 body {
   margin: 0;
   height: 100vh;

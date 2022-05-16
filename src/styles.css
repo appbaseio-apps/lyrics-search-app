@@ -85,6 +85,7 @@ textarea {
   margin-bottom: 5px;
 }
 .lyric-item > p {
+  height: 300px;
   overflow: hidden;
   text-overflow: ellipsis;
   display: -webkit-box;
@@ -94,9 +95,9 @@ textarea {
 }
 
 .lyric-item:hover p {
-  max-height: max-content;
   display: block;
   white-space: pre-wrap;
+  overflow: auto;
 }
 
 // toggle button css
